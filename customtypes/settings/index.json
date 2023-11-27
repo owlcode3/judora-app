@@ -6,6 +6,14 @@
   "status": true,
   "json": {
     "Main": {
+      "site_logo": {
+        "type": "Image",
+        "config": {
+          "label": "Site Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "site_title": {
         "type": "Text",
         "config": {
@@ -39,6 +47,136 @@
                 "label": "Link",
                 "placeholder": "",
                 "select": null
+              }
+            },
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "hero_heading": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Hero Heading",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading1"
+        }
+      },
+      "hero_link": {
+        "type": "Group",
+        "config": {
+          "label": "Hero Link",
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            },
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "hero_image": {
+        "type": "Group",
+        "config": {
+          "label": "Hero Image",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "text": {
+              "type": "Text",
+              "config": {
+                "label": "Text",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "footer_all_right_reserved": {
+        "type": "Text",
+        "config": {
+          "label": "Footer All Right Reserved",
+          "placeholder": ""
+        }
+      },
+      "footer_designed_by": {
+        "type": "Text",
+        "config": {
+          "label": "Footer Designed By",
+          "placeholder": ""
+        }
+      },
+      "footer_logo_image": {
+        "type": "Image",
+        "config": {
+          "label": "Footer Logo Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "footer_our_services": {
+        "type": "Group",
+        "config": {
+          "label": "Footer Our services",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "label",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "footer_contact_details": {
+        "type": "Group",
+        "config": {
+          "label": "Footer Contact Details",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "footer_social_media_links": {
+        "type": "Group",
+        "config": {
+          "label": "Footer Social Media Links",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
               }
             },
             "label": {

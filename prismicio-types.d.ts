@@ -30,9 +30,125 @@ export interface SettingsDocumentDataNavigationItem {
 }
 
 /**
+ * Item in *Settings → Hero Link*
+ */
+export interface SettingsDocumentDataHeroLinkItem {
+  /**
+   * Link field in *Settings → Hero Link*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_link[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Label field in *Settings → Hero Link*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_link[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Settings → Hero Image*
+ */
+export interface SettingsDocumentDataHeroImageItem {
+  /**
+   * Image field in *Settings → Hero Image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_image[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Text field in *Settings → Hero Image*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_image[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Settings → Footer Our services*
+ */
+export interface SettingsDocumentDataFooterOurServicesItem {
+  /**
+   * label field in *Settings → Footer Our services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_our_services[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Settings → Footer Contact Details*
+ */
+export interface SettingsDocumentDataFooterContactDetailsItem {
+  /**
+   * Label field in *Settings → Footer Contact Details*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_contact_details[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Settings → Footer Social Media Links*
+ */
+export interface SettingsDocumentDataFooterSocialMediaLinksItem {
+  /**
+   * Image field in *Settings → Footer Social Media Links*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_social_media_links[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Label field in *Settings → Footer Social Media Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_social_media_links[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
  * Content for Settings documents
  */
 interface SettingsDocumentData {
+  /**
+   * Site Logo field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.site_logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  site_logo: prismic.ImageField<never>;
+
   /**
    * Site Title field in *Settings*
    *
@@ -76,6 +192,111 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
+
+  /**
+   * Hero Heading field in *Settings*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  hero_heading: prismic.TitleField;
+
+  /**
+   * Hero Link field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_link[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  hero_link: prismic.GroupField<Simplify<SettingsDocumentDataHeroLinkItem>>;
+
+  /**
+   * Hero Image field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_image[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  hero_image: prismic.GroupField<Simplify<SettingsDocumentDataHeroImageItem>>;
+
+  /**
+   * Footer All Right Reserved field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_all_right_reserved
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  footer_all_right_reserved: prismic.KeyTextField;
+
+  /**
+   * Footer Designed By field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_designed_by
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  footer_designed_by: prismic.KeyTextField;
+
+  /**
+   * Footer Logo Image field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_logo_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  footer_logo_image: prismic.ImageField<never>;
+
+  /**
+   * Footer Our services field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_our_services[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  footer_our_services: prismic.GroupField<
+    Simplify<SettingsDocumentDataFooterOurServicesItem>
+  >;
+
+  /**
+   * Footer Contact Details field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_contact_details[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  footer_contact_details: prismic.GroupField<
+    Simplify<SettingsDocumentDataFooterContactDetailsItem>
+  >;
+
+  /**
+   * Footer Social Media Links field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_social_media_links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  footer_social_media_links: prismic.GroupField<
+    Simplify<SettingsDocumentDataFooterSocialMediaLinksItem>
+  >;
 }
 
 /**
@@ -109,6 +330,11 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      SettingsDocumentDataHeroLinkItem,
+      SettingsDocumentDataHeroImageItem,
+      SettingsDocumentDataFooterOurServicesItem,
+      SettingsDocumentDataFooterContactDetailsItem,
+      SettingsDocumentDataFooterSocialMediaLinksItem,
       AllDocumentTypes,
     };
   }
