@@ -18,6 +18,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "images": {
+              "type": "SharedSlice"
+            },
             "corporate_target": {
               "type": "SharedSlice"
             },

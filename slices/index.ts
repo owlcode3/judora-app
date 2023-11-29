@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 
 export const components = {
   corporate_target: dynamic(() => import("./CorporateTarget")),
+  images: dynamic(() => import("./Images")),
   judora_group: dynamic(() => import("./JudoraGroup")),
   operations: dynamic(() => import("./Operations")),
 };

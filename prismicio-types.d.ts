@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomepageDocumentDataSlicesSlice =
+  | ImagesSlice
   | CorporateTargetSlice
   | JudoraGroupSlice
   | OperationsSlice;
@@ -543,6 +544,48 @@ export type CorporateTargetSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Images → Items*
+ */
+export interface ImagesSliceDefaultItem {
+  /**
+   * Image field in *Images → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: images.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Images Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImagesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<ImagesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Images*
+ */
+type ImagesSliceVariation = ImagesSliceDefault;
+
+/**
+ * Images Shared Slice
+ *
+ * - **API ID**: `images`
+ * - **Description**: Images
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImagesSlice = prismic.SharedSlice<"images", ImagesSliceVariation>;
+
+/**
  * Primary content in *JudoraGroup → Primary*
  */
 export interface JudoraGroupSliceDefaultPrimary {
@@ -694,6 +737,10 @@ declare module "@prismicio/client" {
       CorporateTargetSliceDefaultItem,
       CorporateTargetSliceVariation,
       CorporateTargetSliceDefault,
+      ImagesSlice,
+      ImagesSliceDefaultItem,
+      ImagesSliceVariation,
+      ImagesSliceDefault,
       JudoraGroupSlice,
       JudoraGroupSliceDefaultPrimary,
       JudoraGroupSliceDefaultItem,
