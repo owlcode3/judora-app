@@ -7,4 +7,5 @@ export const components = {
   images: dynamic(() => import("./Images")),
   judora_group: dynamic(() => import("./JudoraGroup")),
   operations: dynamic(() => import("./Operations")),
+  our_projects: dynamic(() => import("./OurProjects")),
 };

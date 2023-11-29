@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomepageDocumentDataSlicesSlice =
+  | OurProjectsSlice
   | ImagesSlice
   | CorporateTargetSlice
   | JudoraGroupSlice
@@ -710,6 +711,106 @@ export type OperationsSlice = prismic.SharedSlice<
   OperationsSliceVariation
 >;
 
+/**
+ * Primary content in *OurProjects → Primary*
+ */
+export interface OurProjectsSliceDefaultPrimary {
+  /**
+   * Text field in *OurProjects → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_projects.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Image field in *OurProjects → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_projects.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *OurProjects → Items*
+ */
+export interface OurProjectsSliceDefaultItem {
+  /**
+   * Image Round field in *OurProjects → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_projects.items[].image_round
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_round: prismic.ImageField<never>;
+
+  /**
+   * Logo Image field in *OurProjects → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_projects.items[].logo_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo_image: prismic.ImageField<never>;
+
+  /**
+   * Bg Image field in *OurProjects → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_projects.items[].bg_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  bg_image: prismic.ImageField<never>;
+
+  /**
+   * Text field in *OurProjects → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_projects.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for OurProjects Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurProjectsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OurProjectsSliceDefaultPrimary>,
+  Simplify<OurProjectsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *OurProjects*
+ */
+type OurProjectsSliceVariation = OurProjectsSliceDefault;
+
+/**
+ * OurProjects Shared Slice
+ *
+ * - **API ID**: `our_projects`
+ * - **Description**: OurProjects
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurProjectsSlice = prismic.SharedSlice<
+  "our_projects",
+  OurProjectsSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -750,6 +851,11 @@ declare module "@prismicio/client" {
       OperationsSliceDefaultItem,
       OperationsSliceVariation,
       OperationsSliceDefault,
+      OurProjectsSlice,
+      OurProjectsSliceDefaultPrimary,
+      OurProjectsSliceDefaultItem,
+      OurProjectsSliceVariation,
+      OurProjectsSliceDefault,
     };
   }
 }
