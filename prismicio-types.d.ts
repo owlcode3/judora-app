@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = OperationsSlice;
+type HomepageDocumentDataSlicesSlice = JudoraGroupSlice | OperationsSlice;
 
 /**
  * Content for Homepage documents
@@ -460,6 +460,76 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomepageDocument | SettingsDocument;
 
 /**
+ * Primary content in *JudoraGroup → Primary*
+ */
+export interface JudoraGroupSliceDefaultPrimary {
+  /**
+   * Heading field in *JudoraGroup → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: judora_group.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+}
+
+/**
+ * Primary content in *JudoraGroup → Items*
+ */
+export interface JudoraGroupSliceDefaultItem {
+  /**
+   * Image field in *JudoraGroup → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: judora_group.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Text field in *JudoraGroup → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: judora_group.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for JudoraGroup Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type JudoraGroupSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<JudoraGroupSliceDefaultPrimary>,
+  Simplify<JudoraGroupSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *JudoraGroup*
+ */
+type JudoraGroupSliceVariation = JudoraGroupSliceDefault;
+
+/**
+ * JudoraGroup Shared Slice
+ *
+ * - **API ID**: `judora_group`
+ * - **Description**: JudoraGroup
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type JudoraGroupSlice = prismic.SharedSlice<
+  "judora_group",
+  JudoraGroupSliceVariation
+>;
+
+/**
  * Primary content in *Operations → Items*
  */
 export interface OperationsSliceDefaultItem {
@@ -536,6 +606,11 @@ declare module "@prismicio/client" {
       SettingsDocumentDataFooterContactDetailsItem,
       SettingsDocumentDataFooterSocialMediaLinksItem,
       AllDocumentTypes,
+      JudoraGroupSlice,
+      JudoraGroupSliceDefaultPrimary,
+      JudoraGroupSliceDefaultItem,
+      JudoraGroupSliceVariation,
+      JudoraGroupSliceDefault,
       OperationsSlice,
       OperationsSliceDefaultItem,
       OperationsSliceVariation,

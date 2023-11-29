@@ -3,5 +3,6 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  judora_group: dynamic(() => import("./JudoraGroup")),
   operations: dynamic(() => import("./Operations")),
 };

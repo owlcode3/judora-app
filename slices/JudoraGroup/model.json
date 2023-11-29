@@ -1,0 +1,44 @@
+{
+  "id": "judora_group",
+  "type": "SharedSlice",
+  "name": "JudoraGroup",
+  "description": "JudoraGroup",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading3"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

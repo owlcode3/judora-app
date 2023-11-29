@@ -18,6 +18,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "judora_group": {
+              "type": "SharedSlice"
+            },
             "operations": {
               "type": "SharedSlice"
             }
