@@ -8,7 +8,7 @@ async function Footer() {
   const settings = await client.getSingle("settings")
 
   return (
-    <div className="pt-8 pb-[1.7rem]">
+    <div className="pt-1 pb-[1.7rem]">
 
       <div className="flex items-center bg-white w-full h-14">
         <div className="flex justify-around items-center bg-[#0464E8] h-[92%] w-full px-5">

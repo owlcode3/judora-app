@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomepageDocumentDataSlicesSlice =
+  | ContactUsSlice
   | OurProjectsSlice
   | ImagesSlice
   | CorporateTargetSlice
@@ -465,6 +466,61 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomepageDocument | SettingsDocument;
 
 /**
+ * Primary content in *ContactUs → Primary*
+ */
+export interface ContactUsSliceDefaultPrimary {
+  /**
+   * Bg Image field in *ContactUs → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_us.primary.bg_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  bg_image: prismic.ImageField<never>;
+
+  /**
+   * Image field in *ContactUs → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_us.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ContactUs Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactUsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactUsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactUs*
+ */
+type ContactUsSliceVariation = ContactUsSliceDefault;
+
+/**
+ * ContactUs Shared Slice
+ *
+ * - **API ID**: `contact_us`
+ * - **Description**: ContactUs
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactUsSlice = prismic.SharedSlice<
+  "contact_us",
+  ContactUsSliceVariation
+>;
+
+/**
  * Primary content in *CorporateTarget → Primary*
  */
 export interface CorporateTargetSliceDefaultPrimary {
@@ -833,6 +889,10 @@ declare module "@prismicio/client" {
       SettingsDocumentDataFooterContactDetailsItem,
       SettingsDocumentDataFooterSocialMediaLinksItem,
       AllDocumentTypes,
+      ContactUsSlice,
+      ContactUsSliceDefaultPrimary,
+      ContactUsSliceVariation,
+      ContactUsSliceDefault,
       CorporateTargetSlice,
       CorporateTargetSliceDefaultPrimary,
       CorporateTargetSliceDefaultItem,

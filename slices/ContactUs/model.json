@@ -1,0 +1,35 @@
+{
+  "id": "contact_us",
+  "type": "SharedSlice",
+  "name": "ContactUs",
+  "description": "ContactUs",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "bg_image": {
+          "type": "Image",
+          "config": {
+            "label": "Bg Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
