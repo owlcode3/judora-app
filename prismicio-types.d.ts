@@ -4,6 +4,82 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type HomepageDocumentDataSlicesSlice = OperationsSlice;
+
+/**
+ * Content for Homepage documents
+ */
+interface HomepageDocumentData {
+  /**
+   * Title field in *Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Homepage*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: homepage.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: homepage.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Homepage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Homepage document from Prismic
+ *
+ * - **API ID**: `homepage`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomepageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<HomepageDocumentData>,
+    "homepage",
+    Lang
+  >;
+
 /**
  * Item in *Settings → Navigation*
  */
@@ -194,6 +270,61 @@ interface SettingsDocumentData {
   navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
 
   /**
+   * Hero Background Image1 field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_background_image1
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_background_image1: prismic.ImageField<never>;
+
+  /**
+   * Hero Background Image2 field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_background_image2
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_background_image2: prismic.ImageField<never>;
+
+  /**
+   * Hero Background Image3 field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_background_image3
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_background_image3: prismic.ImageField<never>;
+
+  /**
+   * Hero Background Image4 field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_background_image4
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_background_image4: prismic.ImageField<never>;
+
+  /**
+   * Hero Background Image5 field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.hero_background_image5
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_background_image5: prismic.ImageField<never>;
+
+  /**
    * Hero Heading field in *Settings*
    *
    * - **Field Type**: Title
@@ -225,6 +356,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   hero_image: prismic.GroupField<Simplify<SettingsDocumentDataHeroImageItem>>;
+
+  /**
+   * Footer Sitename Dotcom field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_sitename_dotcom
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  footer_sitename_dotcom: prismic.KeyTextField;
 
   /**
    * Footer All Right Reserved field in *Settings*
@@ -315,7 +457,62 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = SettingsDocument;
+export type AllDocumentTypes = HomepageDocument | SettingsDocument;
+
+/**
+ * Primary content in *Operations → Items*
+ */
+export interface OperationsSliceDefaultItem {
+  /**
+   * Image field in *Operations → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Text field in *Operations → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Operations Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OperationsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<OperationsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Operations*
+ */
+type OperationsSliceVariation = OperationsSliceDefault;
+
+/**
+ * Operations Shared Slice
+ *
+ * - **API ID**: `operations`
+ * - **Description**: Operations
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OperationsSlice = prismic.SharedSlice<
+  "operations",
+  OperationsSliceVariation
+>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -327,6 +524,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      HomepageDocument,
+      HomepageDocumentData,
+      HomepageDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
@@ -336,6 +536,10 @@ declare module "@prismicio/client" {
       SettingsDocumentDataFooterContactDetailsItem,
       SettingsDocumentDataFooterSocialMediaLinksItem,
       AllDocumentTypes,
+      OperationsSlice,
+      OperationsSliceDefaultItem,
+      OperationsSliceVariation,
+      OperationsSliceDefault,
     };
   }
 }

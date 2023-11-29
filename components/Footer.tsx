@@ -1,5 +1,4 @@
 import { createClient } from "@/prismicio"
-import addLineBreakToSubstring from "@/utils/line-break"
 import { PrismicNextImage } from "@prismicio/next"
 import clsx from "clsx"
 
@@ -9,7 +8,7 @@ async function Footer() {
   const settings = await client.getSingle("settings")
 
   return (
-    <div className="bg-[url('/background.webp')] bg-cover bg-no-repeat pt-8 pb-[1.7rem]">
+    <div className="pt-8 pb-[1.7rem]">
 
       <div className="flex items-center bg-white w-full h-14">
         <div className="flex justify-around items-center bg-[#0464E8] h-[92%] w-full px-5">
@@ -21,7 +20,7 @@ async function Footer() {
 
       <div className="h-24 relative flex justify-center items-center pb-1">
         <div className="flex justify-between font-semibold text-black text-sm px-28 w-full">
-          <span>&copy; {new Date().getFullYear()} {settings.data.site_title}.com</span>
+          <span>&copy; {new Date().getFullYear()} {settings.data.footer_sitename_dotcom}</span>
           <span className="capitalize">{settings.data.footer_all_right_reserved}</span>
           <span>{settings.data.footer_designed_by}</span>
         </div>
@@ -64,7 +63,7 @@ async function Footer() {
             {settings.data.footer_contact_details[4]?.label}
           </p>
           <p className="max-w-[19.5rem]"
-            dangerouslySetInnerHTML={{ __html: settings.data.footer_contact_details[5]!.label!.replace("Crescent,", "Crescent," + `<br />`) }}
+            dangerouslySetInnerHTML={{ __html: settings.data.footer_contact_details[5]?.label ? settings.data.footer_contact_details[5].label.replace("Crescent,", "Crescent," + `<br />`) : "" }}
           />
         </div>
 

@@ -59,6 +59,46 @@
           }
         }
       },
+      "hero_background_image1": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Background Image1",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "hero_background_image2": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Background Image2",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "hero_background_image3": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Background Image3",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "hero_background_image4": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Background Image4",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "hero_background_image5": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Background Image5",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "hero_heading": {
         "type": "StructuredText",
         "config": {
@@ -112,6 +152,13 @@
               }
             }
           }
+        }
+      },
+      "footer_sitename_dotcom": {
+        "type": "Text",
+        "config": {
+          "label": "Footer Sitename Dotcom",
+          "placeholder": ""
         }
       },
       "footer_all_right_reserved": {
