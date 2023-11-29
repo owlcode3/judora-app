@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = JudoraGroupSlice | OperationsSlice;
+type HomepageDocumentDataSlicesSlice =
+  | CorporateTargetSlice
+  | JudoraGroupSlice
+  | OperationsSlice;
 
 /**
  * Content for Homepage documents
@@ -460,6 +463,86 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomepageDocument | SettingsDocument;
 
 /**
+ * Primary content in *CorporateTarget → Primary*
+ */
+export interface CorporateTargetSliceDefaultPrimary {
+  /**
+   * Image Big field in *CorporateTarget → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: corporate_target.primary.image_big
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_big: prismic.ImageField<never>;
+
+  /**
+   * Image Small field in *CorporateTarget → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: corporate_target.primary.image_small
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_small: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *CorporateTarget → Items*
+ */
+export interface CorporateTargetSliceDefaultItem {
+  /**
+   * Heading field in *CorporateTarget → Items*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: corporate_target.items[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Paragraph field in *CorporateTarget → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: corporate_target.items[].paragraph
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraph: prismic.RichTextField;
+}
+
+/**
+ * Default variation for CorporateTarget Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CorporateTargetSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CorporateTargetSliceDefaultPrimary>,
+  Simplify<CorporateTargetSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *CorporateTarget*
+ */
+type CorporateTargetSliceVariation = CorporateTargetSliceDefault;
+
+/**
+ * CorporateTarget Shared Slice
+ *
+ * - **API ID**: `corporate_target`
+ * - **Description**: CorporateTarget
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CorporateTargetSlice = prismic.SharedSlice<
+  "corporate_target",
+  CorporateTargetSliceVariation
+>;
+
+/**
  * Primary content in *JudoraGroup → Primary*
  */
 export interface JudoraGroupSliceDefaultPrimary {
@@ -606,6 +689,11 @@ declare module "@prismicio/client" {
       SettingsDocumentDataFooterContactDetailsItem,
       SettingsDocumentDataFooterSocialMediaLinksItem,
       AllDocumentTypes,
+      CorporateTargetSlice,
+      CorporateTargetSliceDefaultPrimary,
+      CorporateTargetSliceDefaultItem,
+      CorporateTargetSliceVariation,
+      CorporateTargetSliceDefault,
       JudoraGroupSlice,
       JudoraGroupSliceDefaultPrimary,
       JudoraGroupSliceDefaultItem,

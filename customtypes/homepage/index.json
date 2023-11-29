@@ -18,6 +18,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "corporate_target": {
+              "type": "SharedSlice"
+            },
             "judora_group": {
               "type": "SharedSlice"
             },

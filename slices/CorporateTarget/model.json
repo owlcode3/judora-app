@@ -1,0 +1,54 @@
+{
+  "id": "corporate_target",
+  "type": "SharedSlice",
+  "name": "CorporateTarget",
+  "description": "CorporateTarget",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image_big": {
+          "type": "Image",
+          "config": {
+            "label": "Image Big",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_small": {
+          "type": "Image",
+          "config": {
+            "label": "Image Small",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
+          }
+        },
+        "paragraph": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Paragraph",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph"
+          }
+        }
+      }
+    }
+  ]
+}
