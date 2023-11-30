@@ -1,7 +1,14 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { JSXMapSerializer, PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
+
+
+const components: JSXMapSerializer = {
+  heading2: ({ children }) => (
+    <h2 id='animate-heading' className="text-[#0A57CA] font-bold text-4xl mb-5">{children}</h2>
+  )
+}
 
 /**
  * Props for `CorporateTarget`.
@@ -30,13 +37,7 @@ const CorporateTarget = ({ slice }: CorporateTargetProps): JSX.Element => {
         <div className="flex flex-col justify-between">
           {slice.items.map(({ heading, paragraph }, index) => (
             <div key={index}>
-              <PrismicRichText field={heading} components={{
-                heading2: ({ children }) => (
-                  <h2 id='animate-heading' className="text-[#0A57CA] font-bold text-4xl mb-5">{children}</h2>
-
-                )
-              }} />
-
+              <PrismicRichText field={heading} components={components} />
               <PrismicRichText field={paragraph} components={{
                 paragraph: ({ children }) => (
                   <p id='animate-paragraph' className={clsx("text-[#000000] font-medium text-[0.79rem]", index == 0 ? "max-w-[36rem]" : index == 1 ? "max-w-[34rem]" : "max-w-[35rem]")}>{children}

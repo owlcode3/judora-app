@@ -1,6 +1,12 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { JSXMapSerializer, PrismicRichText, SliceComponentProps } from "@prismicio/react";
+
+const components: JSXMapSerializer = {
+  heading3: ({ children }) => (
+    <h3 className="text-black font-medium max-w-[52rem] text-center text-sm">{children}</h3>
+  )
+}
 
 /**
  * Props for `JudoraGroup`.
@@ -17,11 +23,7 @@ const JudoraGroup = ({ slice }: JudoraGroupProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <PrismicRichText field={slice.primary.heading} components={{
-        heading3: ({ children }) => (
-          <h3 className="text-black font-medium max-w-[52rem] text-center text-sm">{children}</h3>
-        )
-      }} />
+      <PrismicRichText field={slice.primary.heading} components={components} />
       <div className="w-[64rem] grid grid-cols-3 gap-3">
         {slice.items.map(({ image, text }) => (
           <div key={text} className="relative">

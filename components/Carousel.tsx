@@ -1,8 +1,7 @@
 "use client"
+import { useEffect, useRef, useState } from "react";
 import { SettingsDocument } from "@/prismicio-types";
 import { PrismicNextImage } from "@prismicio/next";
-import { clsx } from "clsx";
-import { useEffect, useRef, useState } from "react";
 
 type Props = {
   settings: SettingsDocument<string>

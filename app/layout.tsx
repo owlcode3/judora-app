@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
-import { createClient } from '@/prismicio'
+import { createClient, repositoryName } from '@/prismicio'
 import Head from '@/components/Head'
 import Footer from '@/components/Footer'
+import { PrismicPreview } from '@prismicio/next'
 
 const poppins = Poppins({ subsets: ['latin'], weight: ["300", "400", "500", "600", "700", "800"] })
 
@@ -36,6 +37,7 @@ export default function RootLayout({
         <Head />
         {children}
         <Footer />
+        <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html >
   )
