@@ -87,6 +87,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | OurHistorySlice
   | OperationsSlice
   | ServicesOperationSlice
   | ContactUsSlice;
@@ -835,6 +836,86 @@ export type OperationsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *OurHistory → Primary*
+ */
+export interface OurHistorySliceDefaultPrimary {
+  /**
+   * Image1 field in *OurHistory → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_history.primary.image1
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image1: prismic.ImageField<never>;
+
+  /**
+   * Image2 field in *OurHistory → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_history.primary.image2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image2: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *OurHistory → Items*
+ */
+export interface OurHistorySliceDefaultItem {
+  /**
+   * Heading field in *OurHistory → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_history.items[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Paragraph field in *OurHistory → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_history.items[].paragraph
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraph: prismic.RichTextField;
+}
+
+/**
+ * Default variation for OurHistory Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurHistorySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OurHistorySliceDefaultPrimary>,
+  Simplify<OurHistorySliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *OurHistory*
+ */
+type OurHistorySliceVariation = OurHistorySliceDefault;
+
+/**
+ * OurHistory Shared Slice
+ *
+ * - **API ID**: `our_history`
+ * - **Description**: OurHistory
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurHistorySlice = prismic.SharedSlice<
+  "our_history",
+  OurHistorySliceVariation
+>;
+
+/**
  * Primary content in *OurProjects → Primary*
  */
 export interface OurProjectsSliceDefaultPrimary {
@@ -1061,6 +1142,11 @@ declare module "@prismicio/client" {
       OperationsSliceDefaultItem,
       OperationsSliceVariation,
       OperationsSliceDefault,
+      OurHistorySlice,
+      OurHistorySliceDefaultPrimary,
+      OurHistorySliceDefaultItem,
+      OurHistorySliceVariation,
+      OurHistorySliceDefault,
       OurProjectsSlice,
       OurProjectsSliceDefaultPrimary,
       OurProjectsSliceDefaultItem,

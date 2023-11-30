@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "our_history": {
+              "type": "SharedSlice"
+            },
             "operations": {
               "type": "SharedSlice"
             },

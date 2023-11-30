@@ -8,6 +8,7 @@ export const components = {
   images: dynamic(() => import("./Images")),
   judora_group: dynamic(() => import("./JudoraGroup")),
   operations: dynamic(() => import("./Operations")),
+  our_history: dynamic(() => import("./OurHistory")),
   our_projects: dynamic(() => import("./OurProjects")),
   services_operation: dynamic(() => import("./ServicesOperation")),
 };
