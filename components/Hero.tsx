@@ -1,12 +1,13 @@
 "use client"
 
 import { useEffect } from "react"
+import { usePathname } from 'next/navigation'
+
 import gsap from "gsap"
 import { SettingsDocument } from "@/prismicio-types"
 import { AppendSpanElement } from "@/lib/utils"
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
 import { PrismicRichText, JSXMapSerializer } from "@prismicio/react"
-import Splitting from "splitting"
 
 const components: JSXMapSerializer = {
   heading1: ({ children }) => (
@@ -19,6 +20,8 @@ type Props = {
 }
 
 function Hero({ settings }: Props) {
+
+  const pathname = usePathname()
 
   useEffect(() => {
 
@@ -68,7 +71,7 @@ function Hero({ settings }: Props) {
         );
       });
     }
-  }, [])
+  }, [pathname])
 
 
   return (

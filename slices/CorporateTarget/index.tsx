@@ -7,9 +7,6 @@ import { PrismicNextImage } from "@prismicio/next";
 import { JSXMapSerializer, PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { gsap } from "gsap";
-import Splitting from "splitting"
-import "splitting/dist/splitting.css";
-import "splitting/dist/splitting-cells.css";
 
 const components: JSXMapSerializer = {
   heading2: ({ children }) => (
