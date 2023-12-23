@@ -7,8 +7,9 @@ import { PrismicNextImage } from "@prismicio/next";
 import { JSXMapSerializer, PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { gsap } from "gsap";
-import Splitting from "splitting";
-
+import Splitting from "splitting"
+import "splitting/dist/splitting.css";
+import "splitting/dist/splitting-cells.css";
 
 const components: JSXMapSerializer = {
   heading2: ({ children }) => (
@@ -28,57 +29,63 @@ export type CorporateTargetProps =
 const CorporateTarget = ({ slice }: CorporateTargetProps): JSX.Element => {
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      import('splitting').then(({ default: Splitting }) => {
 
-    const heading = document.querySelectorAll("#animate-heading")!;
-    const paragraph = document.querySelectorAll("#animate-paragraph")!
+        const heading = document.querySelectorAll("#animate-heading")!;
+        const paragraph = document.querySelectorAll("#animate-paragraph")!
 
-    heading.forEach(item => {
-      const lines = Splitting({ target: item, by: "lines" });
+        heading.forEach(item => {
+          const lines = Splitting({ target: item, by: "lines" });
 
-      AppendSpanElement(lines);
+          AppendSpanElement(lines);
 
-      gsap.set(item.querySelectorAll(".word"), {
-        yPercent: 205,
-        opacity: 0,
-        rotateX: 50,
-        transformStyle: "preserve-3d"
-      });
+          gsap.set(item.querySelectorAll(".word"), {
+            yPercent: 205,
+            opacity: 0,
+            rotateX: 50,
+            transformStyle: "preserve-3d"
+          });
 
-      IO(item, { threshold: 0.8 }).then(() => {
-        const elem = item.querySelectorAll(".word");
-        gsap.to(elem, {
-          yPercent: 0,
-          opacity: 1,
-          stagger: elem.length > 100 ? 0.02 : 0.03,
-          duration: elem.length > 100 ? 0.65 : 0.75,
-          ease: "easeOut"
+          IO(item, { threshold: 0.8 }).then(() => {
+            const elem = item.querySelectorAll(".word");
+            gsap.to(elem, {
+              yPercent: 0,
+              opacity: 1,
+              stagger: elem.length > 100 ? 0.02 : 0.03,
+              duration: elem.length > 100 ? 0.65 : 0.75,
+              ease: "easeOut"
+            });
+          });
+        });
+
+        paragraph.forEach(item => {
+          const lines = Splitting({ target: item, by: "lines" });
+
+          AppendSpanElement(lines);
+
+          gsap.set(item.querySelectorAll(".word"), {
+            yPercent: "105",
+            opacity: 0,
+            transformStyle: "preserve-3d"
+          });
+
+          IO(item, { threshold: 0.8 }).then(() => {
+            const elem = item.querySelectorAll(".word");
+            gsap.to(elem, {
+              yPercent: 0,
+              opacity: 1,
+              stagger: elem.length > 100 ? 0.02 : 0.03,
+              duration: elem.length > 100 ? 0.65 : 0.75,
+              ease: "easeOut"
+            });
+          });
         });
       });
-    });
+    }
 
-    paragraph.forEach(item => {
-      const lines = Splitting({ target: item, by: "lines" });
-
-      AppendSpanElement(lines);
-
-      gsap.set(item.querySelectorAll(".word"), {
-        yPercent: "105",
-        opacity: 0,
-        transformStyle: "preserve-3d"
-      });
-
-      IO(item, { threshold: 0.8 }).then(() => {
-        const elem = item.querySelectorAll(".word");
-        gsap.to(elem, {
-          yPercent: 0,
-          opacity: 1,
-          stagger: elem.length > 100 ? 0.02 : 0.03,
-          duration: elem.length > 100 ? 0.65 : 0.75,
-          ease: "easeOut"
-        });
-      });
-    });
   }, [])
+
 
   return (
     <section

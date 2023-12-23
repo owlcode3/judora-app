@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
-import "splitting/dist/splitting.css";
-import "splitting/dist/splitting-cells.css";
 import { createClient, repositoryName } from '@/prismicio'
 import { PrismicPreview } from '@prismicio/next'
 import ToastProvider from '@/providers/toast-provider'
 import Head from '@/components/Head'
 import Footer from '@/components/Footer'
+import SplittingTextClientOnlyComponent from '@/utils/load-splitting-text'
 
 
 const poppins = Poppins({ subsets: ['latin'], weight: ["300", "400", "500", "600", "700", "800"] })
@@ -41,9 +40,11 @@ export default function RootLayout({
     <html className={poppins.className} lang="en">
       <body>
         <ToastProvider />
-        <Head />
-        {children}
-        <Footer />
+        <SplittingTextClientOnlyComponent>
+          <Head />
+          {children}
+          <Footer />
+        </SplittingTextClientOnlyComponent>
         <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html >

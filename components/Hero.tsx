@@ -22,47 +22,54 @@ function Hero({ settings }: Props) {
 
   useEffect(() => {
 
-    const el = document.querySelector("#animate-h1")!;
-    const result = Splitting({ target: el, by: "lines" });
+    if (typeof window !== "undefined") {
+      import('splitting').then(({ default: Splitting }) => {
 
-    AppendSpanElement(result);
+        const el = document.querySelector("#animate-h1")!;
 
-    const timeline = gsap.timeline();
+        const result = Splitting({ target: el, by: "lines" });
 
-    timeline.fromTo(
-      el.querySelectorAll(".word"),
-      {
-        visibility: "visible",
-        yPercent: 205,
-        opacity: 0,
-        rotateX: 50,
-        transformStyle: "preserve-3d"
-      },
-      {
-        yPercent: 0,
-        opacity: 1,
-        rotateX: 0,
-        stagger: 0.03,
-        duration: 0.75,
-        ease: "easeOut"
-      }
-    );
-    timeline.fromTo(
-      document.querySelector(".read-more-link"),
-      {
-        visibility: "visible",
-        yPercent: 20,
-        opacity: 0,
-        transformStyle: "preserve-3d"
-      },
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.75,
-        ease: "easeOut"
-      }
-    );
+        AppendSpanElement(result);
+
+        const timeline = gsap.timeline();
+
+        timeline.fromTo(
+          el.querySelectorAll(".word"),
+          {
+            visibility: "visible",
+            yPercent: 205,
+            opacity: 0,
+            rotateX: 50,
+            transformStyle: "preserve-3d"
+          },
+          {
+            yPercent: 0,
+            opacity: 1,
+            rotateX: 0,
+            stagger: 0.03,
+            duration: 0.75,
+            ease: "easeOut"
+          }
+        );
+        timeline.fromTo(
+          document.querySelector(".read-more-link"),
+          {
+            visibility: "visible",
+            yPercent: 20,
+            opacity: 0,
+            transformStyle: "preserve-3d"
+          },
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 0.75,
+            ease: "easeOut"
+          }
+        );
+      });
+    }
   }, [])
+
 
   return (
     <div className="mt-[10.7rem]">
