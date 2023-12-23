@@ -8,9 +8,9 @@ const components: JSXMapSerializer = {
   ),
 
   list: ({ children }) => (
-    <ol className="text-black list-outside list-disc ml-6 text-[.92rem] font-normal">
+    <ul className="text-black list-outside list-disc ml-6 text-[.92rem] font-normal">
       {children}
-    </ol>
+    </ul>
   ),
 
   paragraph: ({ children }) => (
@@ -37,7 +37,7 @@ const OurHistory = ({ slice }: OurHistoryProps): JSX.Element => {
     >
       <div className="flex gap-12 w-fit px-10 py-7 h-[50rem]">
 
-        <div className="flex flex-col justify-between max-w-[38rem] h-ful">
+        <div className="flex flex-col justify-between max-w-[38rem] h-full">
           {slice.items.map(({ heading, paragraph }, index) => (
             <div key={index}>
               <PrismicRichText field={heading} components={components} />

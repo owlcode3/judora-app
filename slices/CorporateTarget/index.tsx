@@ -1,12 +1,18 @@
+"use client"
+
+import { useEffect } from "react";
+import { AppendSpanElement, IO } from "@/lib/utils";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { JSXMapSerializer, PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
+import { gsap } from "gsap";
+import Splitting from "splitting";
 
 
 const components: JSXMapSerializer = {
   heading2: ({ children }) => (
-    <h2 id='animate-heading' className="text-[#0A57CA] font-bold text-4xl mb-5">{children}</h2>
+    <h2 id='animate-heading' className="text-[#0A57CA] font-bold text-5xl mb-1">{children}</h2>
   )
 }
 
@@ -20,6 +26,60 @@ export type CorporateTargetProps =
  * Component for "CorporateTarget" Slices.
  */
 const CorporateTarget = ({ slice }: CorporateTargetProps): JSX.Element => {
+
+  useEffect(() => {
+
+    const heading = document.querySelectorAll("#animate-heading")!;
+    const paragraph = document.querySelectorAll("#animate-paragraph")!
+
+    heading.forEach(item => {
+      const lines = Splitting({ target: item, by: "lines" });
+
+      AppendSpanElement(lines);
+
+      gsap.set(item.querySelectorAll(".word"), {
+        yPercent: 205,
+        opacity: 0,
+        rotateX: 50,
+        transformStyle: "preserve-3d"
+      });
+
+      IO(item, { threshold: 0.8 }).then(() => {
+        const elem = item.querySelectorAll(".word");
+        gsap.to(elem, {
+          yPercent: 0,
+          opacity: 1,
+          stagger: elem.length > 100 ? 0.02 : 0.03,
+          duration: elem.length > 100 ? 0.65 : 0.75,
+          ease: "easeOut"
+        });
+      });
+    });
+
+    paragraph.forEach(item => {
+      const lines = Splitting({ target: item, by: "lines" });
+
+      AppendSpanElement(lines);
+
+      gsap.set(item.querySelectorAll(".word"), {
+        yPercent: "105",
+        opacity: 0,
+        transformStyle: "preserve-3d"
+      });
+
+      IO(item, { threshold: 0.8 }).then(() => {
+        const elem = item.querySelectorAll(".word");
+        gsap.to(elem, {
+          yPercent: 0,
+          opacity: 1,
+          stagger: elem.length > 100 ? 0.02 : 0.03,
+          duration: elem.length > 100 ? 0.65 : 0.75,
+          ease: "easeOut"
+        });
+      });
+    });
+  }, [])
+
   return (
     <section
       className="pt-20"
@@ -34,9 +94,9 @@ const CorporateTarget = ({ slice }: CorporateTargetProps): JSX.Element => {
           </div>
         </div>
 
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between h-[94%]">
           {slice.items.map(({ heading, paragraph }, index) => (
-            <div key={index}>
+            <div key={index} className="">
               <PrismicRichText field={heading} components={components} />
               <PrismicRichText field={paragraph} components={{
                 paragraph: ({ children }) => (

@@ -37,27 +37,12 @@
             "thumbnails": []
           }
         },
-        "logo_image": {
-          "type": "Image",
-          "config": {
-            "label": "Logo Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
         "bg_image": {
           "type": "Image",
           "config": {
             "label": "Bg Image",
             "constraint": {},
             "thumbnails": []
-          }
-        },
-        "text": {
-          "type": "Text",
-          "config": {
-            "label": "Text",
-            "placeholder": ""
           }
         }
       }

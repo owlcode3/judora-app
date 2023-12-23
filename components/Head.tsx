@@ -14,7 +14,7 @@ async function Head() {
       <Carousel settings={settings} />
       <div className="w-full px-32 py-8 pt-7 pb-0">
         <Header />
-        <Hero />
+        <Hero settings={settings} />
       </div>
     </div>
   )

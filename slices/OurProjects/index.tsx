@@ -21,14 +21,10 @@ const OurProjects = ({ slice }: OurProjectsProps): JSX.Element => {
         <span className="absolute font-bold text-white text-5xl right-[21rem] top-[12.7rem]">{slice.primary.text}</span>
         <PrismicNextImage field={slice.primary.image} />
 
-        <div className="grid grid-cols-6 gap-1 mt-1">
-          {slice.items.map(({ image_round, bg_image, text, logo_image }, index) => (
-            <div key={index} className="relative overflow-hidden h-full rounded-t-none border-t-[2px] rounded-l-none border-l-[2px]" >
+        <div className="grid grid-cols-6 gap-2 mt-[0.4rem]">
+          {slice.items.map(({ image_round, bg_image }, index) => (
+            <div key={index} className="relative overflow-hidden h-full rounded-t-none rounded-l-none" >
               <PrismicNextImage className="object-cover w-full h-full" field={bg_image} />
-              <div className="flex flex-col justify-between items-center absolute bottom-12 w-full h-[55%]">
-                <PrismicNextImage className="w-28" field={logo_image} />
-                <span className="font-medium text-white text-base text-center flex items-end h-24 max-w-[5.5rem] leading-5">{text}</span>
-              </div>
               <PrismicNextImage className="absolute right-5 top-5 w-7" field={image_round} />
             </div>
           ))}

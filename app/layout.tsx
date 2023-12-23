@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
+import "splitting/dist/splitting.css";
+import "splitting/dist/splitting-cells.css";
 import { createClient, repositoryName } from '@/prismicio'
+import { PrismicPreview } from '@prismicio/next'
+import ToastProvider from '@/providers/toast-provider'
 import Head from '@/components/Head'
 import Footer from '@/components/Footer'
-import { PrismicPreview } from '@prismicio/next'
+
 
 const poppins = Poppins({ subsets: ['latin'], weight: ["300", "400", "500", "600", "700", "800"] })
-
-
 
 export async function generateMetadata(): Promise<Metadata> {
 
@@ -18,10 +20,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 
   return {
+    metadataBase: new URL('http://localhost:3000'),
     title: settings.data.site_title || "Judora",
     description: settings.data.meta_description || "Judora integrated services",
     openGraph: {
       images: [settings.data.og_image.url || ""],
+    },
+    icons: {
+      icon: '/icon.svg',
     },
   }
 }
@@ -34,6 +40,7 @@ export default function RootLayout({
   return (
     <html className={poppins.className} lang="en">
       <body>
+        <ToastProvider />
         <Head />
         {children}
         <Footer />

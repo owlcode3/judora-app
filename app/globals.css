@@ -4,12 +4,13 @@
 
 @layer components {
   .linkstyle {
-    @apply relative after:absolute after:block after:right-0 after:bottom-[-2] after:w-0 after:h-[0.2rem] after:bg-white after:transition-all delay-75 ease-in-out hover:after:left-0 hover:after:w-full relative after:absolute after:block after:right-0 after:bottom-[-2] after:w-0 after:h-[0.2rem] after:bg-white after:transition-all delay-75 ease-in-out hover:after:left-0 hover:after:w-full relative after:absolute after:block after:right-0 after:bottom-[-2] after:w-0 after:h-[0.2rem] after:bg-white after:transition-all delay-75 ease-in-out hover:after:left-0 hover:after:w-full relative after:absolute after:block after:right-0 after:bottom-[-2] after:w-0 after:h-[0.2rem] after:bg-white after:transition-all delay-75 ease-in-out hover:after:left-0 hover:after:w-full
+    @apply relative after:absolute after:block after:bottom-[-2] after:w-0 after:h-[0.2rem] after:bg-white after:transition-all delay-75 ease-in-out hover:after:left-0 hover:after:w-full
   }
 }
 
 span.word_wrap {
   overflow: hidden;
   display: inline-block;
+  vertical-align: top;
   will-change: transform, opacity;
 }

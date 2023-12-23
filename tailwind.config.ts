@@ -8,12 +8,7 @@ const config: Config = {
       "./app/**/*.{js,ts,jsx,tsx,mdx}"
    ],
    theme: {
-      extend: {
-         //  fontFamily: {
-         //     body: ["var(--font-nunito-sans)"],
-         //     display: ["var(--font-nunito-sans)"]
-         //  }
-      }
+      extend: {}
    },
    plugins: []
 };

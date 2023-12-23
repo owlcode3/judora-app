@@ -86,7 +86,66 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Our Service → List*
+ */
+export interface OurServiceDocumentDataListItem {
+  /**
+   * List Item field in *Our Service → List*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_service.list[].list_item
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  list_item: prismic.RichTextField;
+}
+
+/**
+ * Content for Our Service documents
+ */
+interface OurServiceDocumentData {
+  /**
+   * Title field in *Our Service*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_service.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * List field in *Our Service*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_service.list[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list: prismic.GroupField<Simplify<OurServiceDocumentDataListItem>>;
+}
+
+/**
+ * Our Service document from Prismic
+ *
+ * - **API ID**: `our_service`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OurServiceDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<OurServiceDocumentData>,
+    "our_service",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice =
+  | GetInTouchSlice
   | OurHistorySlice
   | OperationsSlice
   | ServicesOperationSlice
@@ -530,6 +589,7 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | HomepageDocument
+  | OurServiceDocument
   | PageDocument
   | SettingsDocument;
 
@@ -666,6 +726,172 @@ type CorporateTargetSliceVariation = CorporateTargetSliceDefault;
 export type CorporateTargetSlice = prismic.SharedSlice<
   "corporate_target",
   CorporateTargetSliceVariation
+>;
+
+/**
+ * Primary content in *GetInTouch → Primary*
+ */
+export interface GetInTouchSliceDefaultPrimary {
+  /**
+   * Text field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Image field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Name field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * SurName field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.surname
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  surname: prismic.KeyTextField;
+
+  /**
+   * Email field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * Phone Number field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.phone_number
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone_number: prismic.KeyTextField;
+
+  /**
+   * Company Name field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.company_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  company_name: prismic.KeyTextField;
+
+  /**
+   * Select Date field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.select_date
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  select_date: prismic.KeyTextField;
+
+  /**
+   * Pre Order field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.pre_order
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  pre_order: prismic.KeyTextField;
+
+  /**
+   * Send field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.send
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  send: prismic.KeyTextField;
+
+  /**
+   * Call Us field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.call_us
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  call_us: prismic.KeyTextField;
+
+  /**
+   * Phone Number To Call field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_in_touch.primary.phone_number_to_call
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone_number_to_call: prismic.KeyTextField;
+
+  /**
+   * Blank Form field in *GetInTouch → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: get_in_touch.primary.blank_form
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  blank_form: prismic.BooleanField;
+}
+
+/**
+ * Default variation for GetInTouch Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GetInTouchSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GetInTouchSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *GetInTouch*
+ */
+type GetInTouchSliceVariation = GetInTouchSliceDefault;
+
+/**
+ * GetInTouch Shared Slice
+ *
+ * - **API ID**: `get_in_touch`
+ * - **Description**: GetInTouch
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GetInTouchSlice = prismic.SharedSlice<
+  "get_in_touch",
+  GetInTouchSliceVariation
 >;
 
 /**
@@ -955,16 +1181,6 @@ export interface OurProjectsSliceDefaultItem {
   image_round: prismic.ImageField<never>;
 
   /**
-   * Logo Image field in *OurProjects → Items*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: our_projects.items[].logo_image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  logo_image: prismic.ImageField<never>;
-
-  /**
    * Bg Image field in *OurProjects → Items*
    *
    * - **Field Type**: Image
@@ -973,16 +1189,6 @@ export interface OurProjectsSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   bg_image: prismic.ImageField<never>;
-
-  /**
-   * Text field in *OurProjects → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: our_projects.items[].text
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  text: prismic.KeyTextField;
 }
 
 /**
@@ -1108,6 +1314,9 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      OurServiceDocument,
+      OurServiceDocumentData,
+      OurServiceDocumentDataListItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -1129,6 +1338,10 @@ declare module "@prismicio/client" {
       CorporateTargetSliceDefaultItem,
       CorporateTargetSliceVariation,
       CorporateTargetSliceDefault,
+      GetInTouchSlice,
+      GetInTouchSliceDefaultPrimary,
+      GetInTouchSliceVariation,
+      GetInTouchSliceDefault,
       ImagesSlice,
       ImagesSliceDefaultItem,
       ImagesSliceVariation,

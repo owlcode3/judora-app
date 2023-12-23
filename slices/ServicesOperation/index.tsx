@@ -1,4 +1,5 @@
 import { Content } from "@prismicio/client";
+import { createClient } from "@/prismicio"
 import { PrismicNextImage } from "@prismicio/next";
 import { JSXMapSerializer, PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
@@ -8,9 +9,20 @@ const components: JSXMapSerializer = {
     >{children}</h2>
   ),
 
+  heading3: ({ children }) => (
+    <p className="text-black font-normal mb-1 mt-10 text-[1rem]"
+    >{children}</p>
+  ),
+
   paragraph: ({ children }) => (
     <p className="text-black max-w-[48rem] font-normal text-[0.9rem] mb-4">{children}</p>
-  )
+  ),
+
+  list: ({ children }) => (
+    <ul className="text-black list-outside list-image-none text-[1rem] font-normal">
+      {children}
+    </ul>),
+
 }
 
 /**
@@ -22,10 +34,13 @@ export type ServicesOperationProps =
 /**
  * Component for "ServicesOperation" Slices.
  */
-const ServicesOperation = ({ slice }: ServicesOperationProps): JSX.Element => {
+const ServicesOperation = async ({ slice }: ServicesOperationProps): Promise<JSX.Element> => {
+  const client = createClient()
+  const ourServices = await client.getSingle("our_service")
+
   return (
     <section
-      className="mt-14 mb-2"
+      className="py-14"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
@@ -46,8 +61,17 @@ const ServicesOperation = ({ slice }: ServicesOperationProps): JSX.Element => {
             </div>
           </div>
           <div className="mt-4">
-            <div className="text-black font-normal max-w-[73.8rem]">
+            <div className="text-black font-normal max-w-[73.8rem] text-[1rem]">
               <PrismicRichText field={slice.primary.paragraph} />
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-between max-w-[38rem]">
+            <PrismicRichText field={ourServices.data.title} components={components} />
+            <div className="flex flex-col gap-5">
+              {ourServices.data.list.map((list, key) => (
+                <PrismicRichText key={key} field={list.list_item} components={components} />
+              ))}
             </div>
           </div>
         </div>

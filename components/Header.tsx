@@ -13,7 +13,7 @@ async function Header() {
   return (
     <div className="flex items-center w-[49.8rem]">
       <Link href='/' scroll={false}>
-        <PrismicNextImage className="w-40 h-14" field={settings.data.site_logo} />
+        <PrismicNextImage className="w-40 h-14" field={settings.data.site_logo} priority={true} />
       </Link>
 
       <nav className="flex justify-between ml-auto w-[28rem] text-white text-lg font-semibold">

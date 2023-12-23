@@ -33,7 +33,7 @@ async function Footer() {
         <div className="flex flex-col gap-[1.8rem]">
           {
             settings.data.navigation.map(({ label, link }, index) => (
-              <span className={clsx(index == 0 ? "text-[#0A57CA]" : "")} key={label}>{label}</span>
+              <span className={clsx(index == 0 ? "text-[#0A57CA]" : "")} key={index}>{label}</span>
             ))
           }
         </div>
@@ -69,8 +69,8 @@ async function Footer() {
 
         <div className="flex flex-col gap-[.8rem] mt-2">
           {
-            settings.data.footer_social_media_links.map(({ label, image }) => (
-              <a key={label} href='/' className="flex gap-2 items-center">
+            settings.data.footer_social_media_links.map(({ label, image }, index) => (
+              <a key={index} href='/' className="flex gap-2 items-center">
                 <PrismicNextImage className="w-[2rem] h-[2rem]" field={image} />
                 <span>
                   {label}
