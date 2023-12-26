@@ -340,14 +340,14 @@ export interface SettingsDocumentDataFooterSocialMediaLinksItem {
   label: prismic.KeyTextField;
 
   /**
-   * Link To field in *Settings → Footer Social Media Links*
+   * Link Href field in *Settings → Footer Social Media Links*
    *
-   * - **Field Type**: Link
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.footer_social_media_links[].link_to
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **API ID Path**: settings.footer_social_media_links[].link_href
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  link_to: prismic.LinkField;
+  link_href: prismic.KeyTextField;
 }
 
 /**

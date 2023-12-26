@@ -233,13 +233,11 @@
                 "placeholder": ""
               }
             },
-            "link_to": {
-              "type": "Link",
+            "link_href": {
+              "type": "Text",
               "config": {
-                "label": "Link To",
-                "placeholder": "",
-                "allowTargetBlank": true,
-                "select": null
+                "label": "Link Href",
+                "placeholder": ""
               }
             }
           }
