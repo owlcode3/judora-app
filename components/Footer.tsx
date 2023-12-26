@@ -72,12 +72,16 @@ async function Footer() {
         <div className="flex flex-col gap-[.8rem] mt-2">
           {
             settings.data.footer_social_media_links.map(({ label, image, link_href }, index) => (
-              <a href={`${link_href?.toString()}`} key={index} className="flex gap-2 items-center text-black" target='_blank' rel='noreferrer'>
-                <PrismicNextImage className="w-[2rem] h-[2rem]" field={image} />
-                <span>
-                  {label}
-                </span>
-              </a>
+
+              link_href ?
+                (
+                  <a href={link_href.toString()} key={index} className="flex gap-2 items-center text-black" target='_blank' rel='noreferrer'>
+                    <PrismicNextImage className="w-[2rem] h-[2rem]" field={image} />
+                    <span>
+                      {label}
+                    </span>
+                  </a>
+                ) : null
             ))
           }
         </div>
