@@ -7,6 +7,7 @@ import ToastProvider from '@/providers/toast-provider'
 import Head from '@/components/Head'
 import Footer from '@/components/Footer'
 import SplittingTextClientOnlyComponent from '@/utils/load-splitting-text'
+import ScrollPageToTop from '@/utils/scroll-page-to-top'
 
 
 const poppins = Poppins({ subsets: ['latin'], weight: ["300", "400", "500", "600", "700", "800"] })
@@ -39,6 +40,7 @@ export default function RootLayout({
 
   return (
     <html className={poppins.className} lang="en">
+      <ScrollPageToTop />
       <body>
         <ToastProvider />
         <SplittingTextClientOnlyComponent>

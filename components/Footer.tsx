@@ -1,5 +1,5 @@
 import { createClient } from "@/prismicio"
-import { PrismicNextImage } from "@prismicio/next"
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
 import clsx from "clsx"
 
 async function Footer() {
@@ -33,7 +33,9 @@ async function Footer() {
         <div className="flex flex-col gap-[1.8rem]">
           {
             settings.data.navigation.map(({ label, link }, index) => (
-              <span className={clsx(index == 0 ? "text-[#0A57CA]" : "")} key={index}>{label}</span>
+              <PrismicNextLink field={link} scroll={false} className={clsx(index == 0 ? "text-[#0A57CA]" : "")} key={index}>
+                {label}
+              </PrismicNextLink>
             ))
           }
         </div>
