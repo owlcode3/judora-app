@@ -8,7 +8,7 @@ async function Footer() {
   const settings = await client.getSingle("settings")
 
   return (
-    <div className="pt-1 pb-[1.7rem]">
+    <footer className="pt-1 pb-[1.7rem] bg-white">
 
       <div className="flex items-center bg-white w-full h-14">
         <div className="flex justify-around items-center bg-[#0464E8] h-[92%] w-full px-5">
@@ -33,7 +33,7 @@ async function Footer() {
         <div className="flex flex-col gap-[1.8rem]">
           {
             settings.data.navigation.map(({ label, link }, index) => (
-              <PrismicNextLink field={link} scroll={false} className={clsx(index == 0 ? "text-[#0A57CA]" : "")} key={index}>
+              <PrismicNextLink field={link} scroll={false} className={clsx(index == 0 ? "text-[#0A57CA]" : "text-black")} key={index}>
                 {label}
               </PrismicNextLink>
             ))
@@ -43,7 +43,7 @@ async function Footer() {
         <div className="flex flex-col max-w-[17.5rem] gap-[.4rem]">
           {
             settings.data.footer_our_services.map((item, index) => (
-              <span className={clsx("leading-[1.4]", index == 0 ? "text-[#0A57CA]" : "", item.label?.includes("(E-waste)") ? "max-w-[14rem]" : "")} key={index}>{item.label}</span>
+              <span className={clsx("leading-[1.4]", index == 0 ? "text-[#0A57CA]" : "text-black", item.label?.includes("(E-waste)") ? "max-w-[14rem]" : "")} key={index}>{item.label}</span>
             ))
           }
         </div>
@@ -71,19 +71,19 @@ async function Footer() {
 
         <div className="flex flex-col gap-[.8rem] mt-2">
           {
-            settings.data.footer_social_media_links.map(({ label, image }, index) => (
-              <a key={index} href='/' className="flex gap-2 items-center">
+            settings.data.footer_social_media_links.map(({ label, image, link_to }, index) => (
+              <PrismicNextLink field={link_to} key={index} className="flex gap-2 items-center text-black" target='_blank' rel='noreferrer'>
                 <PrismicNextImage className="w-[2rem] h-[2rem]" field={image} />
                 <span>
                   {label}
                 </span>
-              </a>
+              </PrismicNextLink>
             ))
           }
         </div>
       </div>
 
-    </div>
+    </footer>
   )
 }
 ;

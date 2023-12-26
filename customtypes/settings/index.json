@@ -232,6 +232,15 @@
                 "label": "Label",
                 "placeholder": ""
               }
+            },
+            "link_to": {
+              "type": "Link",
+              "config": {
+                "label": "Link To",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "select": null
+              }
             }
           }
         }
