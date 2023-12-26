@@ -81,7 +81,7 @@ async function Footer() {
                       {label}
                     </span>
                   </a>
-                ) : null
+                ) : "no link"
             ))
           }
         </div>
