@@ -19,7 +19,7 @@ async function Header() {
       <nav className="flex justify-between ml-auto w-[28rem] text-white text-lg font-semibold">
         {
           settings.data.navigation.map(({ label, link }) => (
-            <PrismicNextLink key={label} field={link} className="linkstyle capitalize">{label}</PrismicNextLink>))
+            <PrismicNextLink key={label} field={link} scroll={false} className="linkstyle capitalize">{label}</PrismicNextLink>))
         }
       </nav>
     </div>

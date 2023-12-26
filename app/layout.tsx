@@ -36,6 +36,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html className={poppins.className} lang="en">
       <body>
