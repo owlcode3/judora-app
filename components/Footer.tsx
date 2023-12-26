@@ -75,7 +75,7 @@ async function Footer() {
 
               link_href ?
                 (
-                  <a href={link_href.toString()} key={index} className="flex gap-2 items-center text-black" target='_blank' rel='noreferrer'>
+                  <a href={link_href} key={index} className="flex gap-2 items-center text-black" target='_blank' rel='noreferrer'>
                     <PrismicNextImage className="w-[2rem] h-[2rem]" field={image} />
                     <span>
                       {label}
